@@ -1,6 +1,5 @@
 package com.hmall.item.controller;
 
-
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.hmall.api.dto.ItemDTO;
 import com.hmall.api.dto.OrderDetailDTO;
@@ -26,7 +25,8 @@ public class ItemController {
 
     @ApiOperation("分页查询商品")
     @GetMapping("/page")
-    public PageDTO<ItemDTO> queryItemByPage(PageQuery query) {
+    public PageDTO<ItemDTO> queryItemByPage(PageQuery query, @RequestHeader(value = "token", required = false) String token) {
+        System.out.println("token = " + token);
         // 1.分页查询
         Page<Item> result = itemService.page(query.toMpPage("update_time", false));
         // 2.封装并返回
