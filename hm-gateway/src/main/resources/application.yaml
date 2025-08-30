@@ -30,3 +30,15 @@ spring:
             - Path=/orders/**
       default-filters:
         - AddRequestHeader=token,123456
+hm:
+  jwt:
+    location: classpath:hmall.jks
+    alias: hmall
+    password: hmall123
+    tokenTTL: 30m
+  auth:
+    excludePaths:
+      - /search/**
+      - /users/login
+      - /items/**
+      - /hi
