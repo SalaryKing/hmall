@@ -1,5 +1,6 @@
 package com.hmall.cart.controller;
 
+import cn.hutool.core.thread.ThreadUtil;
 import com.hmall.cart.domain.dto.CartFormDTO;
 import com.hmall.cart.domain.po.Cart;
 import com.hmall.cart.domain.vo.CartVO;
@@ -42,6 +43,7 @@ public class CartController {
     @ApiOperation("查询购物车列表")
     @GetMapping
     public List<CartVO> queryMyCarts() {
+        ThreadUtil.sleep(500);
         return cartService.queryMyCarts();
     }
 
